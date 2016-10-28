@@ -1,0 +1,14 @@
+@import "~styles/variables.scss";
+@import "~styles/mixins.scss";
+
+.page {
+  @include page();
+}
+
+.title {
+  @include title();
+}
+
+.instructions {
+  list-style-type: decimal;
+}

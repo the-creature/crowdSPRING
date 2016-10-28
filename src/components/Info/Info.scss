@@ -1,0 +1,130 @@
+@import "~styles/variables.scss";
+@import "~styles/mixins.scss";
+
+.content {
+  width: 100%;
+  max-width: 46 * $grid_item_unit;
+  display: flex;
+
+  margin-top: 20px;
+}
+
+.avatarContainer {
+  @include square-image(6 * $grid_item_unit);
+  flex-shrink: 0;
+  margin-right: 2 * $grid_item_unit;
+}
+
+.info {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.name {
+  composes: title;
+}
+
+.email {
+  margin-bottom: 30px;
+}
+
+.aboutTitle {
+  composes: title;
+}
+
+.input {
+  border: 1px solid #ccc;
+  border-radius: $border_radius;
+
+  height: 2rem;
+  width: 22 * $grid_item_unit;
+
+  line-height: 2rem;
+  font-size: 1em;
+  padding: 0 0.5rem;
+  margin-left: -0.5rem;
+}
+
+.nameInput {
+  composes: input;
+
+  margin-top: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.emailInput {
+  composes: input;
+
+  margin-bottom: 14px;
+}
+
+.aboutInput {
+  composes: input;
+  margin-left: 0;
+  line-height: initial;
+  height: auto;
+  min-height: 200px;
+  width: 100%;
+  resize: vertical;
+  padding-top: 0.5rem;
+
+  margin-bottom: 20px;
+}
+
+.saveButton {
+  @include hover-states();
+
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+
+  width: 10 * $grid_item_unit;
+  height: 2.5rem;
+  line-height: 2.5rem;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+  color: white;
+  background: $secondary-color;
+  border-radius: $border_radius;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .avatarContainer {
+    @include square-image(10 * $grid_item_unit_mobile);
+    margin-right: 0;
+  }
+
+  .info {
+    align-items: center;
+  }
+
+  .aboutTitle {
+    align-self: flex-start;
+  }
+
+  .input {
+    width: calc(100% - 1rem);
+    margin-left: 0;
+  }
+
+  .saveButton {
+    width: 100%;
+  }
+}

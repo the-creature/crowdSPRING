@@ -1,0 +1,113 @@
+@import "~styles/variables.scss";
+@import "~styles/mixins.scss";
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.content {
+  width: 100%;
+  max-width: 1280px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  width: calc(100% - #{2 * $content_side_padding});
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  padding: 0 $content_side_padding;
+
+  background: #eee;
+
+  @media screen and (max-width: 768px) {
+    width: calc(100% - #{2 * $content_side_padding_mobile});
+    padding: 0 $content_side_padding_mobile;
+  }
+}
+
+.title {
+  display: block;
+  margin: 0;
+
+  * {
+    color: $primary-color;
+    text-decoration: none;
+  }
+}
+
+.main {
+  width: 100%;
+}
+
+.userSelect {
+  margin-left: auto;
+}
+
+.sidebarButton {
+  @include hover-states();
+  padding: 0;
+  box-shadow: none;
+  outline: none;
+  border: 0;
+
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $secondary-color;
+  border-radius: $border_radius;
+  color: #fff;
+  cursor: pointer;
+}
+
+.sidebarOpenButton {
+  composes: sidebarButton;
+  margin-left: auto;
+}
+
+.sidebar {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebarHeader {
+  composes: header;
+}
+
+.sidebarTitle {
+  margin-left: 20px;
+}
+
+.usersList {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userLink {
+  @include hover-states();
+  display: block;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  color: $secondary-color;
+
+  * {
+    text-decoration: none;
+    color: currentColor;
+  }
+}

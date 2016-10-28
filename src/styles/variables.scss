@@ -1,0 +1,12 @@
+$primary-color: #333;
+$secondary-color: #006dff;
+
+$grid_item_unit: 1280px / 64;
+$grid_item_unit_mobile: 100vw / 24;
+
+$content_side_padding: $grid_item_unit;
+$content_side_padding_mobile: $grid_item_unit_mobile;
+
+$content_top_padding: 50px;
+
+$border_radius: 5px;

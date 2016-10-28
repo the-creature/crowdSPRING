@@ -1,0 +1,63 @@
+@import "~styles/variables.scss";
+@import "~styles/mixins.scss";
+
+.page {
+  @include page();
+}
+
+.title {
+  @include title();
+}
+
+.controls {
+  display: flex;
+
+  width: 100%;
+  max-width: 46 * $grid_item_unit;
+}
+
+.tabs {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.tab {
+  @include hover-states();
+
+  display: block;
+  margin-right: 20px;
+  font-size: 0.9em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $secondary-color;
+
+  * {
+    text-decoration: none;
+    color: currentColor;
+  }
+}
+
+.activeTab {
+  composes: tab;
+
+  color: $primary-color;
+}
+
+.editButton {
+  @include hover-states();
+
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0 0 0 auto;
+  outline: none;
+  background: transparent;
+
+  color: $secondary-color;
+
+  * {
+    text-decoration: none;
+    color: currentColor;
+  }
+}
