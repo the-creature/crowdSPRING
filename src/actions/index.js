@@ -11,6 +11,8 @@ export const USERS_ERROR = 'USERS_ERROR';
 export const UPDATE_USER_DATA = 'UPDATE_USER_DATA';
 export const ADD_GALLERY_IMAGES = 'ADD_GALLERY_IMAGES';
 
+export const CHANGE_LAYOUT = 'CHANGE_LAYOUT';
+
 // action creators
 
 const setUsers = createAction(SET_USERS);
@@ -19,6 +21,8 @@ const setUsersLoaded = createAction(USERS_LOADED);
 const setUsersError = createAction(USERS_ERROR);
 export const updateUserData = createAction(UPDATE_USER_DATA);
 export const addGalleryImages = createAction(ADD_GALLERY_IMAGES);
+
+export const changeLayout = createAction(CHANGE_LAYOUT);
 
 /**
  * Loads users from server and dispatches action with them
@@ -50,10 +54,18 @@ export function loadUsers() {
   };
 }
 
+export function openLink(path) {
+  return push(path);
+}
+
 export function selectUser(id) {
-  return push(`/user/${id}`);
+  return openLink(`/user/${id}`);
 }
 
 export function openUserInfo(id) {
-  return push(`/user/${id}/info`);
+  return openLink(`/user/${id}/info`);
+}
+
+export function openUserGallery(id) {
+  return openLink(`/user/${id}/gallery`);
 }

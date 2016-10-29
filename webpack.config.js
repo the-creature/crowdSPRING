@@ -35,7 +35,12 @@ var config = {
       {
         test: /\.scss/,
         loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?sourceMap',
-        include: path.resolve('./src')
+        include: [path.resolve('./src/components'), path.resolve('./src/containers')]
+      },
+      {
+        test: /\.scss/,
+        loader: 'style!css!postcss!sass?sourceMap',
+        include: path.resolve('./src/styles')
       }
     ]
   },

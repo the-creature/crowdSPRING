@@ -17,7 +17,7 @@
 
 .header {
   width: calc(100% - #{2 * $content_side_padding});
-  height: 60px;
+  height: $header_height;
 
   display: flex;
   align-items: center;
@@ -73,13 +73,21 @@
   margin-left: auto;
 }
 
+.sidebarCloseButtonContainer {
+  height: 100%;
+  width: 4 * $grid_item_unit_mobile;
+  margin-right: 2 * $grid_item_unit_mobile;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .sidebar {
   width: 100%;
   height: 100%;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .sidebarHeader {
@@ -87,7 +95,7 @@
 }
 
 .sidebarTitle {
-  margin-left: 20px;
+  margin-left: -0.1rem;
 }
 
 .usersList {
@@ -95,7 +103,8 @@
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+  margin-left: 7 * $grid_item_unit_mobile;
 }
 
 .userLink {
@@ -110,4 +119,51 @@
     text-decoration: none;
     color: currentColor;
   }
+}
+
+.dropdown {
+  margin-left: auto;
+
+  &:not(:global .open) {
+    .dropdownButton {
+      background: transparent;
+      color: $primary-color;
+    }
+  }
+}
+
+.dropdownButton {
+  composes: sidebarButton;
+}
+
+.dropdownMenu {
+  width: 14 * $grid_item_unit;
+}
+
+.dropdownItem {
+  @include hover-states();
+
+  * {
+    outline: none!important;
+    background: transparent!important;
+    color: $secondary-color!important;
+    text-decoration: none!important;
+  }
+}
+
+.activeDropdownItem {
+  composes: dropdownItem;
+
+  * {
+    color: $primary-color!important;
+  }
+}
+
+.preloader {
+  width: 100%;
+  height: calc(100vh - #{$header_height});
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

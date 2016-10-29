@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from 'actions';
 import getUser from 'utils/getUser';
+import { validateEmail, validateUsername } from 'utils/validation';
 
 import styles from './Info.scss';
 
@@ -12,6 +13,19 @@ class Edit extends Component {
     actions: PropTypes.object.isRequired
   };
 
+  state = {
+    valid: true
+  };
+
+  handleChange = () => {
+    const validName = validateUsername(this.nameInput.value);
+    const validEmail = validateEmail(this.emailInput.value);
+
+    this.setState({
+      valid: validName && validEmail
+    });
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
 
@@ -19,9 +33,9 @@ class Edit extends Component {
 
     actions.updateUserData({
       id,
-      name: this.nameInput.value,
-      email: this.emailInput.value,
-      about: this.aboutInput.value
+      name: this.nameInput.value.trim(),
+      email: this.emailInput.value.trim(),
+      about: this.aboutInput.value.trim()
     });
 
     actions.openUserInfo(id);
@@ -29,6 +43,7 @@ class Edit extends Component {
 
   render() {
     const { user } = this.props;
+    const { valid } = this.state;
 
     return (
       <div className={styles.content}>
@@ -40,11 +55,13 @@ class Edit extends Component {
             ref={ref => this.nameInput = ref}
             className={styles.nameInput}
             defaultValue={user.name}
+            onChange={this.handleChange}
           />
           <input
             ref={ref => this.emailInput = ref}
             className={styles.emailInput}
             defaultValue={user.email}
+            onChange={this.handleChange}
           />
           <h4 className={styles.aboutTitle}>About {user.name}</h4>
           <textarea
@@ -52,7 +69,7 @@ class Edit extends Component {
             className={styles.aboutInput}
             defaultValue={user.about}
           />
-          <button className={styles.saveButton} type="submit">Save Changes</button>
+          <button className={styles.saveButton} type="submit" disabled={!valid}>Save Changes</button>
         </form>
       </div>
     );

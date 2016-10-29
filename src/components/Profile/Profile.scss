@@ -61,3 +61,74 @@
     color: currentColor;
   }
 }
+
+.editButtonMobile {
+  composes: editButton;
+
+  height: 3rem;
+  width: 3rem;
+
+  border: 1px solid $secondary-color;
+  border-radius: $border_radius;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:active {
+    color: #fff;
+    background: $secondary-color;
+  }
+}
+
+.dropdown {
+  &:not(:global .open) {
+    .dropdownButton {
+      background: transparent;
+      color: $primary-color;
+    }
+  }
+}
+
+.dropdownButton {
+  height: 3rem;
+  width: 16 * $grid_item_unit_mobile;
+
+  border: 1px solid #aaa;
+  border-radius: $border_radius;
+  box-sizing: border-box;
+
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 700;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 0.5rem;
+}
+
+.dropdownMenu {
+  width: 16 * $grid_item_unit_mobile;
+
+  margin: 0;
+  padding: 0;
+}
+
+.dropdownItem {
+  @include hover-states();
+
+  height: 3rem;
+
+  * {
+    outline: none!important;
+    background: transparent!important;
+    color: $secondary-color!important;
+    text-decoration: none!important;
+    line-height: 3rem!important;
+    font-size: 1.2rem!important;
+    padding: 0 0.5rem!important;
+  }
+}

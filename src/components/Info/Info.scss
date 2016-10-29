@@ -98,6 +98,11 @@
   background: $secondary-color;
   border-radius: $border_radius;
   cursor: pointer;
+
+  &:disabled {
+    background: #eee;
+    pointer-events: none;
+  }
 }
 
 @media screen and (max-width: 768px) {
